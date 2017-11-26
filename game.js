@@ -10,6 +10,7 @@ var score = {
 };
 var clicked = false;
 var grad = null;
+var floorHeight = 150;
 
 function init() {
     var ratio = width / height;
@@ -42,7 +43,7 @@ function resetGame() {
     score.clicks = 0;
 
     for (i = 0; i < 2; i += 1) {
-        entities.push(new BottomBar(width * i, height - 100, width));
+        entities.push(new BottomBar(width * i, height - floorHeight, width));
     }
 
     entities.push(new Pipe(width * 2, 50));
