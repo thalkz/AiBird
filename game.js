@@ -18,7 +18,7 @@ function init() {
     canvas.width = width;
     canvas.height = height;
     context = canvas.getContext('2d');
-    currentHeight = window.innerHeight;
+    currentHeight = window.innerHeight - 10;
     currentWidth = currentHeight * ratio;
     canvas.style.width = currentWidth + 'px';
     canvas.style.height = currentHeight + 'px';
@@ -46,18 +46,22 @@ function resetGame() {
         entities.push(new BottomBar(width * i, height - floorHeight, width));
     }
 
+    entities.push(new Pipe(width, 50));
+    entities.push(new Pipe(width + width / 2, 50));
     entities.push(new Pipe(width * 2, 50));
-    entities.push(new Pipe(width * 2 + width / 2, 50));
-    entities.push(new Pipe(width * 3, 50));
 
     bird = new Bird();
     entities.push(bird);
+
+    initMap();    
 }
 
 function loop() {
     window.requestAnimationFrame(loop);
     update();
     render();
+    createMap();
+    drawMap();
 }
 
 function update() {
