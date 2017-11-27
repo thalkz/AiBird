@@ -12,6 +12,8 @@ var clicked = false;
 var grad = null;
 var floorHeight = 150;
 
+var graph;
+
 function init() {
     var ratio = width / height;
     canvas = document.getElementsByTagName('canvas')[0];
@@ -38,6 +40,10 @@ function init() {
 };
 
 function resetGame() {
+
+    graph = new Graph();
+    graph.init();
+
     entities = [];
     score.distance = 0;    
     score.clicks = 0;
@@ -62,6 +68,14 @@ function loop() {
     render();
     createMap();
     drawMap();
+    graph.draw();
+
+    var output = graph.getOutput();
+
+    //console.log(output);
+    if (output > 0.5) {
+        clicked = true;
+    }
 }
 
 function update() {
@@ -96,7 +110,7 @@ function render() {
 }
 
 function gameOver() {
-    console.log(score);
+    //console.log(score);
     resetGame();
 }
 
