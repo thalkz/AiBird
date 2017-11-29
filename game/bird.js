@@ -3,7 +3,7 @@ function Bird(id) {
     this.id = id;
 
     this.img = new Image();
-    this.img.src = 'img/bird.png';
+    this.img.src = 'game/img/bird.png';
     this.frame = 0;
     this.spriteX = 0;
     this.spriteY = 0;
